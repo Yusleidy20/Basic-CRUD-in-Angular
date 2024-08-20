@@ -20,6 +20,9 @@ export class AppComponent {
   ];
 
   selectedEmployee: Employee = new Employee();
+  openForEdit(employee: Employee){
+    this.selectedEmployee = employee;
+  }
 
   addOrEdit(){
     
@@ -33,11 +36,12 @@ export class AppComponent {
   }
 
   delete(){
-    this.employeeArray = this.employeeArray.filter(x => x != this.selectedEmployee);
-    this.selectedEmployee = new Employee();
+    if(confirm('Are you sure you want to delete it?')){
+      this.employeeArray = this.employeeArray.filter(x => x != this.selectedEmployee);
+      this.selectedEmployee = new Employee();
+    }
+ 
   }
-  selectEmployee(employee: Employee){
-    this.selectedEmployee = employee
-  }
+
 }
  
